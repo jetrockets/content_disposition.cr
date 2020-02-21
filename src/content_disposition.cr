@@ -1,12 +1,17 @@
+require "uri"
+
 class ContentDisposition
   ATTACHMENT = "attachment"
   INLINE     = "inline"
 
   DEFAULT_TO_ASCII = ->(filename : String) do
-    String.new(filename.encode("US-ASCII", invalid: :skip))
-  end
+    array = [] of Char
+    filename.each_char do |char|
+      array << (char.ascii? ? char : '?')
+    end
 
-  # class << self
+    array.join
+  end
 
   class_property to_ascii : Proc(String, String) | Nil = nil
 
@@ -22,14 +27,8 @@ class ContentDisposition
     new(**options).to_s
   end
 
-  # alias call format
-
-  # property :to_ascii
-  # end
-
   getter :disposition, :filename, :to_ascii
 
-  # def initialize(disposition : String, filename : String, to_ascii: nil)
   def initialize(disposition : String, filename : String, to_ascii : Proc(String, String) | Nil = nil)
     unless [ATTACHMENT, INLINE].includes?(disposition.to_s)
       raise ArgumentError.new "unknown disposition: #{disposition.inspect}"
