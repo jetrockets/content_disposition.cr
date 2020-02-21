@@ -4,7 +4,7 @@ Spectator.describe ContentDisposition do
   after_each do
     ContentDisposition.to_ascii = nil
   end
-  
+
 	describe ".format" do
     it "returns Content-Disposition string" do
       value = ContentDisposition.format(disposition: "attachment", filename: "racecar.jpg")
