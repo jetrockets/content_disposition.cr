@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jetrockets/content_disposition.cr.svg?branch=master)](https://travis-ci.org/jetrockets/content_disposition.cr)
+
 # ContentDisposition
 
 Creating a properly encoded and escaped standards-compliant HTTP

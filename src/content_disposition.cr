@@ -13,7 +13,7 @@ class ContentDisposition
     array.join
   end
 
-  class_property to_ascii : Proc(String, String) | Nil = nil
+  class_property to_ascii : Proc(String, String)? = nil
 
   def self.attachment(filename = nil)
     format(disposition: ATTACHMENT, filename: filename)
@@ -27,15 +27,17 @@ class ContentDisposition
     new(**options).to_s
   end
 
+  def self.call(**options)
+    format(**options)
+  end
+
   getter :disposition, :filename, :to_ascii
 
-  def initialize(disposition : String, filename : String, to_ascii : Proc(String, String) | Nil = nil)
+  def initialize(@disposition : String | Symbol, @filename : String?, to_ascii : Proc(String, String)? = nil)
     unless [ATTACHMENT, INLINE].includes?(disposition.to_s)
       raise ArgumentError.new "unknown disposition: #{disposition.inspect}"
     end
 
-    @disposition = disposition
-    @filename = filename
     @to_ascii = to_ascii || self.class.to_ascii || DEFAULT_TO_ASCII
   end
 
@@ -49,17 +51,17 @@ class ContentDisposition
 
   TRADITIONAL_ESCAPED_CHAR = /[^ A-Za-z0-9!#$+.^_`|~-]/
 
-  def ascii_filename
-    "filename=\"" + percent_escape(to_ascii.not_nil!.call(filename), TRADITIONAL_ESCAPED_CHAR) + "\""
+  def ascii_filename : String?
+    "filename=\"" + percent_escape(to_ascii.not_nil!.call(filename.not_nil!), TRADITIONAL_ESCAPED_CHAR) + "\"" if filename
   end
 
   RFC_5987_ESCAPED_CHAR = /[^A-Za-z0-9!#$&+.^_`|~-]/
 
-  def utf8_filename
-    "filename*=UTF-8''" + percent_escape(filename, RFC_5987_ESCAPED_CHAR)
+  def utf8_filename : String?
+    "filename*=UTF-8''" + percent_escape(filename.not_nil!, RFC_5987_ESCAPED_CHAR) if filename
   end
 
-  private def percent_escape(string, pattern)
+  private def percent_escape(string : String, pattern)
     string.gsub(pattern) do |char|
       char.bytes.map { |byte| "%%%02X" % byte }.join
     end

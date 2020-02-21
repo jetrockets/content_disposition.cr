@@ -1,5 +1,5 @@
 name: content_disposition
-version: 1.0.0
+version: 1.0.1
 
 authors:
   - Igor Alexandrov <igor.alexandrov@gmail.com>
@@ -7,3 +7,11 @@ authors:
 crystal: 0.33.0
 
 license: MIT
+
+development_dependencies:
+  spectator:
+    gitlab: arctic-fox/spectator
+
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
