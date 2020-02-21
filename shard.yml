@@ -1,0 +1,9 @@
+name: content_disposition
+version: 1.0.0
+
+authors:
+  - Igor Alexandrov <igor.alexandrov@gmail.com>
+
+crystal: 0.33.0
+
+license: MIT
