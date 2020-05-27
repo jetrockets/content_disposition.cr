@@ -1,12 +1,14 @@
-[![Build Status](https://travis-ci.org/jetrockets/content_disposition.cr.svg?branch=master)](https://travis-ci.org/jetrockets/content_disposition.cr)
+# content_disposition.cr
 
-# ContentDisposition
+[![Build Status](https://travis-ci.org/jetrockets/content_disposition.cr.svg?branch=master)](https://travis-ci.org/jetrockets/content_disposition.cr)
+[![GitHub release](https://img.shields.io/github/release/jetrockets/content_disposition.cr.svg)](https://GitHub.com/jetrockets/content_disposition.cr/releases/)
+[![GitHub license](https://img.shields.io/github/license/jetrockets/content_disposition.cr)](https://github.com/jetrockets/content_disposition.cr/blob/master/LICENSE)
 
 Creating a properly encoded and escaped standards-compliant HTTP
 `Content-Disposition` header for potential filenames with special characters is
 surprisingly confusing.
 
-This ruby gem does that and only that, in a single 50-line file with no dependencies.
+This library does that and only that, in a single 50-line file with no dependencies.
 
 Crystal port of [https://github.com/shrinerb/content_disposition](https://github.com/shrinerb/content_disposition)
 
