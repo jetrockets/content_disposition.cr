@@ -1,10 +1,10 @@
 name: content_disposition
-version: 1.1.1
+version: 1.1.2
 
 authors:
   - Igor Alexandrov <igor.alexandrov@gmail.com>
 
-crystal: 0.35.0
+crystal: 0.35.1
 
 license: MIT
 
