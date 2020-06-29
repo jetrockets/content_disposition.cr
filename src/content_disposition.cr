@@ -2,7 +2,7 @@ require "uri"
 
 class ContentDisposition
   ATTACHMENT = "attachment"
-  INLINE = "inline"
+  INLINE     = "inline"
 
   DEFAULT_TO_ASCII = ->(filename : String) do
     array = [] of Char

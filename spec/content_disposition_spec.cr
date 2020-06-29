@@ -5,7 +5,7 @@ Spectator.describe ContentDisposition do
     ContentDisposition.to_ascii = nil
   end
 
-	describe ".format" do
+  describe ".format" do
     it "returns Content-Disposition string" do
       value = ContentDisposition.format(disposition: "attachment", filename: "racecar.jpg")
 
@@ -62,7 +62,7 @@ Spectator.describe ContentDisposition do
       it "returns disposition with filename" do
         content_disposition = ContentDisposition.new(
           disposition: :inline,
-          filename:    "racecar.jpg",
+          filename: "racecar.jpg",
         )
 
         expect(content_disposition.to_s).to eq %(inline; filename="racecar.jpg"; filename*=UTF-8''racecar.jpg)
@@ -73,7 +73,7 @@ Spectator.describe ContentDisposition do
       it "returns disposition" do
         content_disposition = ContentDisposition.new(
           disposition: :inline,
-          filename:    nil,
+          filename: nil,
         )
 
         expect(content_disposition.to_s).to eq %(inline)
@@ -85,7 +85,7 @@ Spectator.describe ContentDisposition do
     it "encodes an ascii filename" do
       content_disposition = ContentDisposition.new(
         disposition: :inline,
-        filename:    "racecar.jpg",
+        filename: "racecar.jpg",
       )
 
       expect(content_disposition.ascii_filename).to eq %(filename="racecar.jpg")
@@ -149,7 +149,7 @@ Spectator.describe ContentDisposition do
     it "encodes an ascii filename" do
       content_disposition = ContentDisposition.new(
         disposition: :inline,
-        filename:    "racecar.jpg",
+        filename: "racecar.jpg",
       )
 
       expect(content_disposition.utf8_filename).to eq %(filename*=UTF-8''racecar.jpg)
@@ -158,7 +158,7 @@ Spectator.describe ContentDisposition do
     it "encodes a Latin filename with accented characters" do
       content_disposition = ContentDisposition.new(
         disposition: :inline,
-        filename:    "råcëçâr.jpg",
+        filename: "råcëçâr.jpg",
       )
 
       expect(content_disposition.utf8_filename).to eq %(filename*=UTF-8''r%C3%A5c%C3%AB%C3%A7%C3%A2r.jpg)
@@ -167,11 +167,10 @@ Spectator.describe ContentDisposition do
     it "encodes a non-Latin filename" do
       content_disposition = ContentDisposition.new(
         disposition: :inline,
-        filename:    "автомобиль.jpg",
+        filename: "автомобиль.jpg",
       )
 
       expect(content_disposition.utf8_filename).to eq %(filename*=UTF-8''%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C.jpg)
     end
   end
-
 end
