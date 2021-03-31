@@ -1,6 +1,6 @@
 # content_disposition.cr
 
-[![Build Status](https://travis-ci.org/jetrockets/content_disposition.cr.svg?branch=master)](https://travis-ci.org/jetrockets/content_disposition.cr)
+[![Build Status](https://github.com/jetrockets/content_disposition.cr/workflows/specs/badge.svg?branch=master)](https://github.com/jetrockets/content_disposition.cr/actions)
 [![GitHub release](https://img.shields.io/github/release/jetrockets/content_disposition.cr.svg)](https://GitHub.com/jetrockets/content_disposition.cr/releases/)
 [![GitHub license](https://img.shields.io/github/license/jetrockets/content_disposition.cr)](https://github.com/jetrockets/content_disposition.cr/blob/master/LICENSE)
 
